@@ -12,7 +12,7 @@ namespace BookWebAPI.DTOs
 
         public int? CountryId { get; set; }
 
-        public ICollection<BookDTO>? Books { get; set; }
+
 
     }
 }

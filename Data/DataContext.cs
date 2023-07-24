@@ -21,6 +21,8 @@ namespace BookWebAPI.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<Author>()
                 .HasOne(a => a.Country)
                 .WithMany(c => c.Author)

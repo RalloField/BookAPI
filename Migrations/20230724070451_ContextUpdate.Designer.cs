@@ -4,6 +4,7 @@ using BookWebAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookAPI.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20230724070451_ContextUpdate")]
+    partial class ContextUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,9 +36,6 @@ namespace BookAPI.Migrations
                     b.Property<DateTime>("BirthDay")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("BooksId")
-                        .HasColumnType("int");
-
                     b.Property<int?>("CountryId")
                         .HasColumnType("int");
 
@@ -48,8 +48,6 @@ namespace BookAPI.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("BooksId");
 
                     b.HasIndex("CountryId");
 
@@ -156,10 +154,6 @@ namespace BookAPI.Migrations
 
             modelBuilder.Entity("BookWebAPI.Models.Author", b =>
                 {
-                    b.HasOne("BookWebAPI.Models.Books", null)
-                        .WithMany("Authors")
-                        .HasForeignKey("BooksId");
-
                     b.HasOne("BookWebAPI.Models.Country", "Country")
                         .WithMany("Author")
                         .HasForeignKey("CountryId");
@@ -191,11 +185,6 @@ namespace BookAPI.Migrations
             modelBuilder.Entity("BookWebAPI.Models.Author", b =>
                 {
                     b.Navigation("Books");
-                });
-
-            modelBuilder.Entity("BookWebAPI.Models.Books", b =>
-                {
-                    b.Navigation("Authors");
                 });
 
             modelBuilder.Entity("BookWebAPI.Models.Country", b =>
