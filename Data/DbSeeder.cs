@@ -45,22 +45,6 @@ namespace BookWebAPI.Data
                 }
             }
 
-            private static void SeedBooks(DataContext context)
-            {
-                if (!context.Books.Any())
-                {
-                    var books = new List<Books>
-                    {
-                    new Books { Title = "High-Fidelity", Description = "Drama", AuthorId = 1, GenreId = 1, ShopId = 1 },
-                    new Books { Title = "The Man Who Fell From Grace With The Sea", Description = "Drama", AuthorId = 2, GenreId = 2, ShopId = 2 },
-                    new Books { Title = "Antonia", Description = "Poetry", AuthorId = 3, GenreId = 3, ShopId = 3 }
-                };
-
-                    context.Books.AddRange(books);
-                    context.SaveChanges();
-                }
-            }
-
         private static void SeedGenres(DataContext context)
         {
             if (!context.Genres.Any())
@@ -78,21 +62,40 @@ namespace BookWebAPI.Data
             }
         }
 
-            private static void SeedShops(DataContext context)
+        private static void SeedShops(DataContext context)
+        {
+            if (!context.Shops.Any())
             {
-                if (!context.Shops.Any())
-                {
-                    var shops = new List<Shop>
+                var shops = new List<Shop>
                 {
                     new Shop { Name = "De Groene Waterman", Address = "Kapelstraat 8", City = "Antwerp" },
                     new Shop { Name = "De Slegte", Address = "Waterstraat 5", City = "Ghent" },
                     new Shop { Name = "Demian", Address = "Veldstraat 54", City = "Antwerp" }
                 };
 
-                    context.Shops.AddRange(shops);
+                context.Shops.AddRange(shops);
+                context.SaveChanges();
+            }
+        }
+
+
+        private static void SeedBooks(DataContext context)
+            {
+                if (!context.Books.Any())
+                {
+                    var books = new List<Books>
+                    {
+                    new Books { Title = "High-Fidelity", Description = "Drama", AuthorId = 1},
+                    new Books { Title = "The Man Who Fell From Grace With The Sea", Description = "Drama", AuthorId = 2 },
+                    new Books { Title = "Antonia", Description = "Poetry", AuthorId = 3}
+                };
+
+                    context.Books.AddRange(books);
                     context.SaveChanges();
                 }
             }
+
+            
         }
     }
 
