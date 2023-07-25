@@ -51,9 +51,9 @@ namespace BookWebAPI.Data
                 {
                     var books = new List<Books>
                     {
-                    new Books { Title = "High-Fidelity", Description = "Drama", AuthorId = 1, GenreId = 1, ShopId = 1 },
-                    new Books { Title = "The Man Who Fell From Grace With The Sea", Description = "Drama", AuthorId = 2, GenreId = 2, ShopId = 2 },
-                    new Books { Title = "Antonia", Description = "Poetry", AuthorId = 3, GenreId = 3, ShopId = 3 }
+                    new Books { Title = "High-Fidelity", Description = "Drama", AuthorId = 1},
+                    new Books { Title = "The Man Who Fell From Grace With The Sea", Description = "Drama", AuthorId = 2},
+                    new Books { Title = "Antonia", Description = "Poetry", AuthorId = 3}
                 };
 
                     context.Books.AddRange(books);
